@@ -84,7 +84,25 @@ class ViewController: UIViewController {
             
             thirdVC.someString = "thirdView modified"
         }
+        
+        if segue.identifier == "toFourthVC" {
+            let fourthVC = segue.destination as! FourthViewController
+            
+            fourthVC.someString = "fourthVC modified"
+        }
     }
     
+    
+    var num = 3
+    
+    // 어떤 조건에 따라서 Segue 를 실행할 것이니 말 것인지
+    // 언제 실행되냐? 직접적인 Segue 를 만들었을 때만 실행된다, eg. button 에서 direct 로 연결했을 때
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if num > 5 {
+            return false
+        } else {
+            return true
+        }
+    }
 }
 
